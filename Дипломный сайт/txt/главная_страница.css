@@ -1,0 +1,736 @@
+
+body{
+    height: 100%;
+    width: 100%;
+    font-family: "Ledger", serif;
+    margin: 0px;
+}
+
+/* Шапка  */
+header{
+    background-color: #565656;
+    width: 100%;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* margin-top: 0; */
+}
+
+.logo{
+    width: 20%;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0px 100px;
+}
+
+
+.social-header{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 20%;
+  justify-content: space-evenly;
+}
+
+
+
+
+.text{
+    font-family: "Ledger", serif;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+
+
+    
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.img-logo{
+  width: 400px;
+  height: 200px;
+}
+
+
+
+
+
+
+/* 1 блок */
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 50px;
+    padding: 28px 116px;
+    border: 100px;
+    cursor: pointer;
+    border-radius: 45%;
+    text-align: center;
+    font-family: "Ledger", serif;
+}
+
+.container .btn:hover {
+    background-color: rgb(247, 247, 247);
+}
+
+
+/* Базовые стили слоя затемнения и модального окна  */
+.overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  visibility: hidden;
+  /* фон затемнения */
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  position: fixed; /* фиксированное поцизионирование */
+  cursor: default; /* тип курсара */
+  -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  -ms-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+  }
+  .overlay:target {
+  visibility: visible;
+  opacity: 1;
+  }
+  .is-image {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display:block;
+  margin: 10%;
+  width: 100%;
+  height: auto;
+  /* скругление углов встроенных картинок */
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  }
+  /* встроенные элементы м-медиа, фреймы */
+  embed, iframe {
+  top: 0;
+  right: 0;
+  bottom: 0; 
+  left: 0; 
+  display:block;
+  margin: auto;
+  min-width: 320px;
+  max-width: 800px;
+  width: 100%;
+  }
+  .popup h1 { /* заголовок 1 */
+  color: #008000;
+  text-align: left;
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+  font:24px 'Trebuchet MS', Helvetica, sans-serif;
+  font-weight: bold;
+  }
+  .popup h2 { /* заголовок 2 */
+  color: #008000;
+  text-align: left;
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+  font:22px 'Trebuchet MS', Helvetica, sans-serif;
+  }
+  /*** Формируем стили модального окна ***/
+  .popup {
+  top: 0;
+  right: 0;
+  left: 0;
+  font-size: 14px;
+  z-index: 10;
+  visibility: hidden;
+  margin: 0 auto;
+  width: 90%;
+  min-width: 320px;
+  max-width: 600px;
+  /* фиксированное позиционирование, окно стабильно при прокрутке */
+  position: fixed;
+  padding: 15px;
+  border: 1px solid #383838;
+  /* скругление углов */
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 50px;
+  background-color: #FFFFFF;
+  /* внешняя тень блока */
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  -ms-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  -o-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.8);
+  /* полная прозрачность окна, появление при клике */
+  opacity: 0;
+  /* эффект перехода (появление) */
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+  height: 600px;
+  display: flex;
+  }
+  /* активируем появление окна и затемнение фона */
+  .overlay:target+.popup {
+  top: 20%; /* положение окна от верха страницы при появлении */
+  visibility: visible;
+  opacity: 1; /* убираем прозрачность */
+  }
+  /* формируем кнопку закрытия */
+  .close {
+  position: absolute;
+  top: -10px;
+  right: -10px;padding: 0;
+  width: 20px;
+  height: 26px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  background-color: rgba(61, 61, 61, 0.8);
+  -webkit-box-shadow: 0px 0px 10px #000;
+  -moz-box-shadow: 0px 0px 10px #000;
+  box-shadow: 0px 0px 10px #000;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 20px;
+  /* задаём значения и эффект перехода при наведении */
+  -webkit-transition: all ease .8s;
+  -moz-transition: all ease .8s;
+  
+  -ms-transition: all ease .8s;
+  -o-transition: all ease .8s;
+  transition: all ease .8s;
+  }
+  .close:before {
+  color: rgba(255, 255, 255, 0.9);
+  content: "X";
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+  font-size: 12px;
+  }
+  .close:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  /* крутим кнопку при наведении */  
+  }
+  /* опционально при добавлении вложений */
+  .popup p, .popup div {
+  margin-bottom: 10px;
+  }
+  
+  
+  /* button */
+  
+  .button {
+  
+    font-size: 20px;
+    color: white;
+    width: 270px;
+    text-decoration: none;
+    padding: 10px 5px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    cursor: pointer;
+  
+  }
+  .button-blue {
+    background-color: #0600FF;
+    }
+  .button:hover {
+    background-color: #5555ff;
+    box-shadow:0 0 10px 10px #b7b7ff inset;
+  }
+  .button:active {
+      background-color: #0000ff;
+      box-shadow:0 0 0 0 #ffffff; 
+  }
+  
+  
+  .flex-direction-nav li {
+      position: absolute;
+      height: 100%;
+      width: 40px;
+      top: 0;
+      }
+      
+      .flex-direction-nav li:first-child {
+      left: 0;
+      }
+      
+      .flex-direction-nav li:last-child {
+      right: 0;
+      }
+      
+      .flex-direction-nav li a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      text-indent: 100%;
+      white-space: nowrap;
+      
+      transition: background-color 0.2s;
+      }
+      
+      .flex-direction-nav li a::before, .flex-direction-nav li a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 2px;
+      height: 13px;
+      background-color: white;
+      }
+      
+      .flex-direction-nav li a::before {
+      transform: translateY(-35px) rotate(45deg);
+      }
+      
+      .flex-direction-nav li a::after {
+      transform: translateY(-27px) rotate(-45deg);
+      }
+      
+      .flex-direction-nav li:last-child a::before {
+      transform: translateY(-35px) rotate(-45deg);
+      }
+      
+      .flex-direction-nav li:last-child a::after {
+      transform: translateY(-27px) rotate(45deg);
+      }
+      
+      .cd-testimonials-all {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: white;
+      z-index: 2;
+      
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity .3s 0s, visibility 0s .3s;
+      }
+      
+      .cd-testimonials-all.is-visible {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity .3s 0s, visibility 0s 0s;
+      }
+
+
+
+
+
+
+
+
+
+
+
+/* 2 блок */
+.block-2{
+    display: flex;
+    align-items: center;
+    height: 400px;
+    background-color: #565656
+} 
+
+.block-2-text{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.element-block-2{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+}
+
+.element{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* 3 блок */
+
+.works{
+    display: flex;
+    flex-direction: column;
+    background: #D4D4D4;
+}
+
+.img-works{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 125px;
+}
+
+.text-works{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 4 блок */
+
+.info-contackt{
+    background-color: #565656;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    color: #fff;
+    
+}
+
+.social-contact{
+  display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+}
+
+.text-info{
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+/* 5 блок */
+    /* Слайдер */
+    #slides{
+        position: relative;
+        height: 715px;
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+        width: 50%;
+      }
+      
+      .slide{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        opacity: 0;
+        z-index: 1;
+      
+        -webkit-transition: opacity 3s;
+        -moz-transition: opacity 3s;
+        -o-transition: opacity 3s;
+        transition: opacity 0s;
+      }
+      
+      .showing{
+        opacity: 1;
+        z-index: 2;
+      }
+      
+      
+      
+   
+      
+      .slide{
+        font-size: 30px;
+        padding: 40px;
+        box-sizing: border-box;
+        color: #fff;
+      
+      
+      }
+      
+
+.otzuv{
+  display: flex;
+    justify-content: space-around;
+  background-color: #565656;
+  width: 100%;
+  border-radius: 40px;
+  box-shadow: 10px 5px 5px #6c6c6c;
+  height: auto;
+}
+
+.text-otzuv{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: #ffffff;
+}
+
+/* Звезды рейтинга */
+.full-stars {
+  text-align: center;
+}
+.full-stars .rating-group {
+  display: inline-flex;
+}
+.full-stars input {
+  position: absolute;
+  left: -9999px;
+}
+.full-stars label {
+  margin: 0;
+  cursor: pointer;
+}
+.full-stars label svg {
+  margin: 2px;
+  height: 40px;
+  width: 40px;
+  fill: #337AB7;
+  transition: fill 0.3s;
+}
+.full-stars input:checked ~ label svg {
+  fill: #BFE2FF;
+}
+.full-stars .rating-group:hover label svg {
+  fill: #337AB7;
+}
+.full-stars .rating-group input:hover ~ label svg {
+  fill: #BFE2FF;
+}
+
+
+
+
+.block-5{
+  display: flex;
+  background: #D4D4D4;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+
+.otzuv-text-button-element{
+font-size: 60px;
+background-color: #565656;
+color: white;
+border-radius: 99px;
+width: 682px;
+height: 133px;
+box-shadow: 10px 5px 5px #6c6c6c;
+font-family: "Ledger", serif;
+}
+
+.otzuv-text-element{
+  font-size: 60px;
+}
+
+.otzuv-text{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 609px;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Подвал */
+
+.footer{
+  background-color: #565656;
+}
+
+.block-footer{
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+}
+
+.footer-block1{
+width: 30%;
+display: flex;
+flex-direction: column;
+padding: 10px 50px;
+justify-content: space-evenly;
+border-right: 1px solid #aaa;
+}
+
+.footer-block2{
+width: 17.5%;
+border-right: 1px solid #aaa;
+}
+
+.footer-block3{
+width: 17.5%;
+border-right: 1px solid #aaa;
+}
+
+.footer-social{
+width: 17.5%;
+}
+
+.footer-text{
+font-size: 20px;
+color: #8B8B8B;
+}
+
+.footer-heading{
+font-size: 35px;
+color: #fff;
+}
+
+.footer-text-element{
+font-size: 20px;
+color: #8B8B8B;
+}
+
+.footer-social{
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+/* Адаптация */
+
+/* Шапка */
+@media (max-width: 1530px) {
+  .logo{
+    width: 25%;
+  }
+}
+
+@media (max-width: 1270px) {
+  header{
+    display: flex;
+    flex-direction: column;
+    height: 430px;
+  }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+  }
+
+  .text{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .social-header{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-evenly;
+    margin: 0px 0px 10px 0px;
+  }
+
+  .container .btn{
+    font-size: 30px;
+  }
+}
+
+
+@media (max-width: 826px) {
+  header{
+    height: 760px;
+  }
+
+  .text{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .social-header{
+    width: 40%;
+  }
+
+  .img-logo{
+    width: 300px;
+    height: 100px;
+  }
+}
